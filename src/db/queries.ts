@@ -234,8 +234,8 @@ export function deleteMindchunk(id: string): void {
 export function getMindchunksCount(): number {
   const db = getDatabase();
   const stmt = db.prepare('SELECT COUNT(*) FROM mindchunks');
-  const result = stmt.get() as { count: number };
-  return result.count;
+  const result = stmt.get() as { 'COUNT(*)': number };
+  return result['COUNT(*)'] || 0;
 }
 
 // ============================================================================
@@ -367,6 +367,6 @@ export function logDownload(ip: string): void {
 export function getDownloadsCount(): number {
   const db = getDatabase();
   const stmt = db.prepare('SELECT COUNT(*) FROM downloads');
-  const result = stmt.get() as { count: number };
-  return result.count;
+  const result = stmt.get() as { 'COUNT(*)': number };
+  return result['COUNT(*)'] || 0;
 }

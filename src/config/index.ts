@@ -1,6 +1,7 @@
 import { Static, Type } from "@sinclair/typebox";
 import envSchema from "env-schema";
 import path from "node:path";
+import packageJson from "../../package.json";
 
 enum NodeEnv {
   development = "development",
@@ -16,7 +17,6 @@ export enum LogLevel {
 }
 
 const schema = Type.Object({
-  VERSION: Type.String({ default: "0.0.0" }),
   LOG_LEVEL: Type.Enum(LogLevel),
   NODE_ENV: Type.Enum(NodeEnv),
   HOST: Type.String({ default: "localhost" }),
@@ -56,7 +56,7 @@ const env = envSchema<Static<typeof schema>>({
 });
 
 export default {
-  version: env.VERSION,
+  version: packageJson.version ?? "0.0.0",
   nodeEnv: env.NODE_ENV,
   isDevelopment: env.NODE_ENV === NodeEnv.development,
   isProduction: env.NODE_ENV === NodeEnv.production,
