@@ -6,12 +6,7 @@ export const searchSchema = {
   }),
   response: {
     200: Type.Object({
-      mindchunks: Type.Array(Type.Object({
-        id: Type.String(),
-        summary: Type.String(),
-        context: Type.String(),
-        author: Type.String(),
-      })),
+      mindchunks: Type.Array(Type.String()),
     }),
     403: Type.Object({
       message: Type.String(),

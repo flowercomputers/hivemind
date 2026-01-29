@@ -81,7 +81,7 @@ const MIGRATIONS = [
     sql: `
       CREATE TABLE IF NOT EXISTS downloads (
         ip TEXT NOT NULL,
-        created_at INTEGER NOT NULL,
+        created_at INTEGER NOT NULL
       );
     `,
   }

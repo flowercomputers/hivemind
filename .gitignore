@@ -39,3 +39,5 @@ temp/
 
 # Database files
 data/
+
+.claude/

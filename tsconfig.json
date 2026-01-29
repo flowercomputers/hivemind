@@ -12,5 +12,5 @@
     "noImplicitAny": false,
     "noStrictGenericChecks": false
   },
-  "include": ["src", "tests", "scripts"]
+  "include": ["src", "tests", "scripts", "scripts"]
 }

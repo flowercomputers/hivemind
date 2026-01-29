@@ -2,7 +2,6 @@
  * Database query functions using prepared statements
  */
 
-import generateUsername from '@/lib/generate-name.js';
 import { getDatabase } from './index.js';
 
 import { randomUUID } from 'node:crypto';
@@ -230,6 +229,13 @@ export function deleteMindchunk(id: string): void {
   const db = getDatabase();
   const stmt = db.prepare('DELETE FROM mindchunks WHERE id = ?');
   stmt.run(id);
+}
+
+export function getMindchunksCount(): number {
+  const db = getDatabase();
+  const stmt = db.prepare('SELECT COUNT(*) FROM mindchunks');
+  const result = stmt.get() as { count: number };
+  return result.count;
 }
 
 // ============================================================================

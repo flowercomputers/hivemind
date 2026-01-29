@@ -1,6 +1,7 @@
 import AutoLoad from "@fastify/autoload";
 import { FastifyInstance } from "fastify";
-import * as path from "node:path";
+import staticPlugin from "@fastify/static";
+import path from "node:path";
 
 import config from "@/config";
 import { getDatabase } from "@/db/index.js";
@@ -34,11 +35,17 @@ export default async function createServer(fastify: FastifyInstance) {
     });
   });
 
+  fastify.register(staticPlugin, {
+    root: path.join(__dirname, "../public"),
+    prefix: "/public/",
+  })
+
   await fastify.register(AutoLoad, {
     dir: path.join(__dirname, "../routes"),
     dirNameRoutePrefix: false,
     matchFilter: (filename) => /\.(route)\.(ts|js)$/.test(filename),
   });
+
 
   const flowers = ["💐", "🌸", "🌹", "🌺", "🌻", "🌼", "🌷", "🪻"];
   fastify.get("/", async () => {

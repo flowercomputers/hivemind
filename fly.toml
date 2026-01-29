@@ -1,0 +1,30 @@
+app = 'hivemind'
+primary_region = 'ewr'
+
+
+[env]
+LOG_LEVEL='info'
+HOST = '0.0.0.0'
+API_HOST='hivemind.fly.dev'
+NODE_ENV = 'production'
+
+[processes]
+api = 'pnpm run start'
+
+[http_service]
+internal_port = 3000
+force_https = true
+auto_start_machines = false
+min_machines_running = 1
+processes = ['api']
+
+[[http_service.checks]]
+interval = '10s'
+timeout = '5s'
+grace_period = '10s'
+method = 'GET'
+path = '/'
+
+[[vm]]
+size = 'performance-2x'
+processes = ['api']

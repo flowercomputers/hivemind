@@ -1,11 +1,12 @@
 {
-  "name": "stem-api",
-  "version": "0.0.1",
-  "description": "api for using fabric",
+  "name": "hivemind",
+  "version": "0.1.0",
+  "description": "hivemind api",
   "author": "Sam Panter <sam@flowercomputer.com>",
   "scripts": {
-    "dev": "pnpm run api:dev",
-    "api:dev": "tsx watch src/server/index.ts | pino-pretty",
+    "build": "rm -rf ./dist && tsx scripts/build.ts",
+    "start": "node dist/server/index.js",
+    "dev": "tsx watch src/server/index.ts | pino-pretty",
     "format": "prettier --write .",
     "format:ci": "prettier src --check",
     "lint": "eslint --fix",
@@ -30,6 +31,7 @@
   },
   "dependencies": {
     "@fastify/autoload": "6.0.2",
+    "@fastify/static": "^9.0.0",
     "@fastify/type-provider-typebox": "5.0.1",
     "@sinclair/typebox": "0.33.22",
     "env-schema": "^6.0.1",
@@ -50,6 +52,8 @@
     "lint-staged": "15.2.10",
     "pino-pretty": "11.3.0",
     "prettier": "3.3.3",
+    "resolve-tspaths": "^0.8.23",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.3",
     "typescript": "5.8.3",
     "typescript-eslint": "8.13.0"
