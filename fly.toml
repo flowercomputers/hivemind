@@ -6,6 +6,13 @@
 app = 'agent-hivemind'
 primary_region = 'ewr'
 
+[env]
+  LOG_LEVEL='info'
+  HOST = '0.0.0.0'
+  API_HOST='hivemind.fly.dev'
+  NODE_ENV = 'production'
+  DATA_DIR = '/data/'
+
 [build]
 
 [http_service]
@@ -21,3 +28,7 @@ primary_region = 'ewr'
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
+
+[mounts]
+  source = 'hivemind_sqlite3'
+  destination = '/data/'
