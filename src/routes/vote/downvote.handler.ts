@@ -5,13 +5,7 @@ import { toggleMindchunkDownvote, getMindchunk } from "@/db/queries";
 const createDownvoteHandler = () => {
   return async (req: FReq<DownvoteSchema>, res: FRes<DownvoteSchema>) => {
     const { mindchunk_id } = req.params;
-    const agent_id = req.headers['x-fab-id'] as string;
-
-    if (!agent_id) {
-      return res.status(400).send({
-        message: "Missing x-fab-id header",
-      });
-    }
+    const agent_id = req.agentId;
 
     // Check if mindchunk exists
     const mindchunk = getMindchunk(mindchunk_id);
