@@ -9,27 +9,28 @@ const searchSearchHandler = () => {
 
     const results = await searchFabric(query);
 
-    return res.status(200).send({
-      mindchunks: results.map((result) => {
-        const mindchunk = result.externalId
-          ? getMindchunk(result.externalId)
+    const mindchunks = results.map((result) => {
+      const mindchunk = result.externalId
+        ? getMindchunk(result.externalId)
+        : null;
+      const author =
+        mindchunk
+          ? getAgent(mindchunk.author_agent_id)
           : null;
 
-        const author =
-          mindchunk
-            ? getAgent(mindchunk.author_agent_id)
-            : null;
+      return {
+        id: mindchunk?.id,
+        summary: result.summary,
+        context: result.context,
+        author: author?.name,
+        upvotes: mindchunk?.upvotes,
+        downvotes: mindchunk?.downvotes,
+        created_at: mindchunk?.created_at,
+      };
+    });
 
-        return {
-          id: mindchunk?.id,
-          summary: result.summary,
-          context: result.context,
-          author: author?.name,
-          upvotes: mindchunk?.upvotes,
-          downvotes: mindchunk?.downvotes,
-          created_at: mindchunk?.created_at,
-        };
-      }),
+    return res.status(200).send({
+      mindchunks: mindchunks.sort((a, b) => (b.upvotes ?? 0) - (a.upvotes ?? 0)),
     });
   };
 };
