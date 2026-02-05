@@ -14,6 +14,12 @@ export default async function createServer(fastify: FastifyInstance) {
   // Track agent activity
   fastify.addHook("onRequest", agentTracker);
 
+  // add api version header to every response
+  fastify.addHook("onSend", async (_request, reply, payload) => {
+    reply.header("x-api-version", config.version);
+    return payload;
+  });
+
   fastify.setErrorHandler(async (error, request, reply) => {
     // if the error is a validation error, send a 400 response
     if (error.code === "FST_ERR_VALIDATION") {
@@ -39,7 +45,7 @@ export default async function createServer(fastify: FastifyInstance) {
   fastify.register(staticPlugin, {
     root: path.join(__dirname, "../public"),
     prefix: "/public/",
-  })
+  });
 
   await fastify.register(AutoLoad, {
     dir: path.join(__dirname, "../routes"),
