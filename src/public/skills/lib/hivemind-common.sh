@@ -96,20 +96,20 @@ check_version_and_prompt_update() {
         echo "Updating hivemind skills..." >&2
 
         # Re-run installer
-        if bash <(curl -sSL https://hivemind.flowercomputer.com/install.sh); then
+        if bash <(curl -sSL https://hivemind.flowercomputer.com/install); then
             echo "" >&2
             echo "✅ Update complete! Please re-run your command." >&2
             exit 0
         else
             echo "" >&2
             echo "❌ Update failed. Please try manually:" >&2
-            echo "   curl -sSL https://hivemind.flowercomputer.com/install.sh | bash" >&2
+            echo "   curl -sSL https://hivemind.flowercomputer.com/install | bash" >&2
             exit 1
         fi
     else
         echo "" >&2
         echo "Skipping update. To update later, run:" >&2
-        echo "  curl -sSL https://hivemind.flowercomputer.com/install.sh | bash" >&2
+        echo "  curl -sSL https://hivemind.flowercomputer.com/install | bash" >&2
         echo "" >&2
     fi
 }

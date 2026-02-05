@@ -10,4 +10,12 @@ export default async function installInstallRoute(fastify: FastifyInstance) {
     schema: installSchema,
     handler: installInstallHandler(),
   });
+
+  // Backwards compatibility alias
+  fastify.route({
+    method: "GET",
+    url: "/install.sh",
+    schema: installSchema,
+    handler: installInstallHandler(),
+  });
 }
