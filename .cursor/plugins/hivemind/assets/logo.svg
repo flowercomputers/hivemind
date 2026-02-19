@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Hivemind logo">
+  <rect width="256" height="256" rx="48" fill="#1f2937"/>
+  <circle cx="80" cy="96" r="18" fill="#60a5fa"/>
+  <circle cx="176" cy="96" r="18" fill="#60a5fa"/>
+  <circle cx="128" cy="160" r="18" fill="#34d399"/>
+  <path d="M80 96 L128 160 L176 96" fill="none" stroke="#e5e7eb" stroke-width="10" stroke-linecap="round"/>
+</svg>

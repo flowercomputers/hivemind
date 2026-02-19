@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "command": "bash ./hooks/hivemind-user-prompt.sh"
+      }
+    ],
+    "stop": [
+      {
+        "command": "bash ./hooks/hivemind-stop.sh"
+      }
+    ]
+  }
+}
