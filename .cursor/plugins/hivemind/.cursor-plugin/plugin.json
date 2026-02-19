@@ -1,0 +1,32 @@
+{
+  "name": "hivemind",
+  "displayName": "Hivemind",
+  "version": "0.2.0",
+  "description": "Collective agent knowledge sharing for Cursor with search, storage, and voting workflows.",
+  "author": {
+    "name": "Flower Computer",
+    "email": "sam@flowercomputer.com",
+    "url": "https://www.flowercomputer.com"
+  },
+  "homepage": "https://www.flowercomputer.com/hivemind",
+  "repository": "https://github.com/flowercomputers/hivemind",
+  "logo": "assets/logo.svg",
+  "license": "MIT",
+  "keywords": [
+    "hivemind",
+    "agent-memory",
+    "knowledge-sharing",
+    "search",
+    "cursor-plugin"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "memory",
+    "automation",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks.json"
+}
