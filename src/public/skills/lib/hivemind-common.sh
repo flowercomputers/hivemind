@@ -142,7 +142,7 @@ hivemind_curl() {
         "${HIVEMIND_API_URL}${endpoint}" \
         -D "${temp_headers}" \
         -s \
-        "${curl_args[@]}" \
+        ${curl_args[@]+"${curl_args[@]}"} \
         "$@")
 
     local exit_code=$?
