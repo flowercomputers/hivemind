@@ -12,6 +12,8 @@ import { randomUUID } from 'node:crypto';
 import { upsertAgent, getAgent } from '@/db/queries.js';
 import generateUsername from '@/lib/generate-name.js';
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 // Extend FastifyRequest to include agentId
 declare module 'fastify' {
   interface FastifyRequest {
@@ -27,7 +29,7 @@ export async function agentTracker(
     // Get agent ID from request header or generate new one
     let agentId = request.headers['x-fab-id'] as string | undefined;
 
-    if (!agentId) {
+    if (!agentId || !UUID_RE.test(agentId)) {
       agentId = randomUUID();
     }
 
